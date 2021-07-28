@@ -1,0 +1,12 @@
+<%- layout('layouts/boilerplate') %>
+    <h1>Show page</h1>
+    <p>
+        <%= post.body %>
+    </p>
+    <span class="post-author">
+        By <%= post.author %>
+    </span>
+    -
+    <span class="post-date">
+        <%= post.date.toLocaleDateString('en-GB') %>
+    </span>

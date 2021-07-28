@@ -1,0 +1,21 @@
+body {
+    margin: 0px;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+.post-card {
+    border: 1px solid black;
+}
+
+.post-author {
+    opacity: 0.5;
+}
+
+label {
+    display: block;
+}
+

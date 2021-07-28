@@ -36,4 +36,4 @@ const seedDB = async (qty) => {
     console.log('Successfully seeded DB');
 }
 
-seedDB(50).then(() => { db.close() })
+seedDB(10).then(() => { db.close() })

@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quacker</title>
-</head>
-<body>
+<%- layout('layouts/boilerplate') %>
     <h1>All Posts from Quacker</h1>
-</body>
-</html>
+    <a href="/posts/new">Create a new post</a>
+    <% for (let post of posts) { %>
+        <div class="post-card">
+            <p>
+                <%= post.body %>
+            </p>
+            <span class="post-author">
+                By <%= post.author %>
+            </span>
+            -
+            <span class="post-date">
+                <%= post.date.toLocaleDateString('en-GB') %>
+            </span>
+            <div>
+                <a href="/posts/<%= post._id %>">Details</a>
+            </div>
+        </div>
+        <% } %>
