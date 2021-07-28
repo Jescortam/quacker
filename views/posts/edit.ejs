@@ -3,12 +3,13 @@
     <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
         <div>
             <label for="body">Body: </label>
-            <textarea name="post[body]" id="body" cols="30" rows="10"
-                placeholder="Quack are you thinking about?"><%= post.body %> </textarea>
+            <textarea name="post[body]" id="body" cols="30" rows="10" placeholder="Quack are you thinking about?"
+                maxlength="63206" required><%= post.body %> </textarea>
         </div>
         <div>
             <label for="author">Author: </label>
-            <input type="text" name="post[author]" id="author" placeholder="Username" value="<%= post.author %>">
+            <input type="text" name="post[author]" id="author" placeholder="Username" value="<%= post.author %>"
+                maxlength="50" required>
         </div>
         <button>Submit</button>
     </form>

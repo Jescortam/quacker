@@ -3,12 +3,12 @@
     <form action="/posts" method="POST">
         <div>
             <label for="body">Body: </label>
-            <textarea name="post[body]" id="body" cols="30" rows="10"
-                placeholder="Quack are you thinking about?"></textarea>
+            <textarea name="post[body]" id="body" cols="30" rows="10" placeholder="Quack are you thinking about?"
+                maxlength="63206" required></textarea>
         </div>
         <div>
             <label for="author">Author: </label>
-            <input type="text" name="post[author]" id="author" placeholder="Username">
+            <input type="text" name="post[author]" id="author" placeholder="Username" maxlength="50" required>
         </div>
         <button>Submit</button>
     </form>
