@@ -2,13 +2,14 @@
     <h1>Create a new post</h1>
     <form action="/posts" method="POST">
         <div>
-            <label for="body">Body: </label>
-            <textarea name="post[body]" id="body" cols="30" rows="10" placeholder="Quack are you thinking about?"
-                maxlength="63206" required></textarea>
+            <label for="post-body">Body: </label>
+            <textarea name="post[body]" id="post-body" class="resource-body" cols="30" rows="10"
+                placeholder="Quack are you thinking about?" maxlength="63206" required></textarea>
         </div>
         <div>
-            <label for="author">Author: </label>
-            <input type="text" name="post[author]" id="author" placeholder="Username" maxlength="50" required>
+            <label for="post-author">Author: </label>
+            <input type="text" name="post[author]" id="post-author" class="resource-author" placeholder="Username"
+                maxlength="50" required>
         </div>
         <button>Submit</button>
     </form>

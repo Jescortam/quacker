@@ -7,11 +7,11 @@ main {
     margin: auto;
 }
 
-.post-card {
+.card {
     border: 1px solid black;
 }
 
-.post-author {
+.card-author {
     opacity: 0.5;
 }
 

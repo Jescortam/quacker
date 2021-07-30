@@ -17,7 +17,7 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.show = async (req, res) => {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id).populate('comments');
     res.render('posts/show', { post });
 }
 
@@ -27,7 +27,7 @@ module.exports.getUpdate = async (req, res) => {
 }
 
 module.exports.update = async (req, res) => {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body.post);
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body.post, { new: true, runValidators: true });
     post.date = new Date(Date.now());
     await post.save();
     res.redirect(`/posts/${post._id}`);
