@@ -1,9 +1,12 @@
 const Joi = require('joi')
 
 const postSchema = Joi.object({
-    body: Joi.string().required().trim().max(63206).truncate(),
-    author: Joi.string().required().trim().max(50).truncate(),
-    date: Joi.date().max('now').required()
-}).required();
+    post: Joi.object({
+        body: Joi.string().required().trim().max(63206).truncate(),
+        author: Joi.string().required().trim().max(50).truncate()
+    }).required()
+}).required()
 
-module.exports = postSchema;
+module.exports = {
+    postSchema
+}

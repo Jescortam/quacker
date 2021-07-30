@@ -6,7 +6,8 @@ const engine = require('ejs-mate');
 const methodOverride = require('method-override');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
-const Joi = require('joi')
+const { validateBody } = require('./middleware')
+const { postSchema } = require('./schemas')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/quacker', {
@@ -42,7 +43,7 @@ app.get('/posts/new', (req, res) => {
     res.render('posts/new');
 })
 
-app.post('/posts', catchAsync(async (req, res) => {
+app.post('/posts', validateBody(postSchema), catchAsync(async (req, res) => {
     const post = new Post(req.body.post);
     post.date = new Date(Date.now());
     await post.save();
@@ -59,7 +60,7 @@ app.get('/posts/:id/edit', catchAsync(async (req, res) => {
     res.render('posts/edit', { post });
 }))
 
-app.put('/posts/:id', catchAsync(async (req, res) => {
+app.put('/posts/:id', validateBody(postSchema), catchAsync(async (req, res) => {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body.post);
     post.date = new Date(Date.now());
     await post.save();
