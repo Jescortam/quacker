@@ -1,13 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const Post = require('./models/posts');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
-const { validateBody } = require('./middleware')
-const { postSchema } = require('./schemas')
+
+const postRoutes = require('./routes/posts')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/quacker', {
@@ -30,47 +28,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
+app.use('/posts', postRoutes)
+
 app.get('/', (req, res) => {
     res.render('home');
 })
-
-app.get('/posts', catchAsync(async (req, res) => {
-    const posts = await Post.find({});
-    res.render('posts/index', { posts });
-}))
-
-app.get('/posts/new', (req, res) => {
-    res.render('posts/new');
-})
-
-app.post('/posts', validateBody(postSchema), catchAsync(async (req, res) => {
-    const post = new Post(req.body.post);
-    post.date = new Date(Date.now());
-    await post.save();
-    res.redirect(`/posts/${post._id}`);
-}))
-
-app.get('/posts/:id', catchAsync(async (req, res) => {
-    const post = await Post.findById(req.params.id);
-    res.render('posts/show', { post });
-}))
-
-app.get('/posts/:id/edit', catchAsync(async (req, res) => {
-    const post = await Post.findById(req.params.id);
-    res.render('posts/edit', { post });
-}))
-
-app.put('/posts/:id', validateBody(postSchema), catchAsync(async (req, res) => {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body.post);
-    post.date = new Date(Date.now());
-    await post.save();
-    res.redirect(`/posts/${post._id}`);
-}))
-
-app.delete('/posts/:id', catchAsync(async (req, res) => {
-    const post = await Post.findByIdAndDelete(req.params.id);
-    res.redirect('/posts')
-}))
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
