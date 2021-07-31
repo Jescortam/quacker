@@ -1,14 +1,95 @@
-body {
+body, html {
     margin: 0px;
+    font-family: 'Roboto', sans-serif;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.not-underline, .not-underline:hover {
+    text-decoration: none;
+}
+
+.navbar {
+    background-color: #023047;
+    height: 50px;
+    line-height: 100%;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: baseline;
+    margin: 0 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    color: #ffb703;
+}
+
+.navbar-list {
+    padding-left: 5px;
+    display: flex;
+}
+
+.navbar-li {
+    list-style-type: none;
+    padding-left: 0px;
+    margin-left: 15px;
+}
+
+.navbar-link {
+    font-size: 1.2em;
+    color: #219ebc;
+}
+
+/* 
+8ecae6
+219ebc
+023047
+ffb703
+fb8500
+ */
 
 main {
     width: 80%;
-    margin: auto;
+    margin: 20px auto;
+}
+
+h1 {
+    margin: 0px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px 0px;
+    background-color: #fb8500;
+    opacity: 1;
+    color: #FFF;
+    border-radius: 10px;
+}
+
+a.btn:hover {
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: hsl(32, 80%, 45%);
+    transition: background-color 150ms ease-in;
 }
 
 .card {
     border: 1px solid black;
+}
+
+.card-body {
+    margin: 10px;
 }
 
 .card-author {

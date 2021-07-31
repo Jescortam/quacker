@@ -1,20 +1,22 @@
 <%- layout('layouts/boilerplate') %>
     <h1>All Posts from Quacker</h1>
-    <a href="/posts/new">Create a new post</a>
+    <a class="btn" href="/posts/new">Create a new post</a>
     <% for (let post of posts) { %>
         <div class="card">
-            <p>
-                <%= post.body %>
-            </p>
-            <span class="card-author">
-                By <%= post.author %>
-            </span>
-            -
-            <span class="card-date">
-                <%= post.date.toLocaleDateString('en-GB') %>
-            </span>
-            <div>
-                <a href="/posts/<%= post._id %>">Details</a>
+            <div class="card-body">
+                <p>
+                    <%= post.body %>
+                </p>
+                <span class="card-author">
+                    By <%= post.author %>
+                </span>
+                -
+                <span class="card-date">
+                    <%= post.date.toLocaleDateString('en-GB') %>
+                </span>
+                <div>
+                    <a href="/posts/<%= post._id %>">Details</a>
+                </div>
             </div>
         </div>
         <% } %>
