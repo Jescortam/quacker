@@ -1,15 +1,19 @@
 <%- layout('layouts/boilerplate') %>
-    <h1>Edit a post</h1>
-    <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+    <div class="container">
         <div>
-            <label for="body">Body: </label>
-            <textarea name="post[body]" id="body" cols="30" rows="10" placeholder="Quack are you thinking about?"
-                maxlength="63206" required><%= post.body %> </textarea>
+            <h1>Edit a post</h1>
+            <form class="form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+                <div class="form-child">
+                    <label for="body">Body: </label>
+                    <textarea name="post[body]" id="body" cols="50" rows="5" placeholder="Quack are you thinking about?"
+                        maxlength="63206" required><%= post.body %> </textarea>
+                </div>
+                <div class="form-child">
+                    <label for="author">Author: </label>
+                    <input type="text" name="post[author]" id="author" placeholder="Username" value="<%= post.author %>"
+                        maxlength="50" required>
+                </div>
+                <button class="btn">Edit</button>
+            </form>
         </div>
-        <div>
-            <label for="author">Author: </label>
-            <input type="text" name="post[author]" id="author" placeholder="Username" value="<%= post.author %>"
-                maxlength="50" required>
-        </div>
-        <button>Submit</button>
-    </form>
+    </div>

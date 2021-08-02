@@ -1,10 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
 body, html {
     margin: 0px;
     font-family: 'Roboto', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
 a {
     text-decoration: none;
+}
+
+a.btn {
+    font-size: 0.75em;
 }
 
 a:hover {
@@ -19,15 +31,20 @@ a:hover {
     background-color: #023047;
     height: 50px;
     line-height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
 }
 
 .navbar-container {
     display: flex;
     align-items: baseline;
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 .navbar-brand {
+    font-weight: bolder;
     font-size: 1.5em;
     color: #ffb703;
 }
@@ -58,7 +75,7 @@ fb8500
 
 main {
     width: 80%;
-    margin: 20px auto;
+    margin: 80px auto;
 }
 
 h1 {
@@ -66,17 +83,16 @@ h1 {
 }
 
 .btn {
+    box-shadow: 0px;
+    font-weight: bold;
+    font-size: 0.875em;
     display: inline-block;
-    padding: 10px;
+    padding: 0.625em 1.125em;
     margin: 10px 0px;
     background-color: #fb8500;
     opacity: 1;
     color: #FFF;
-    border-radius: 10px;
-}
-
-a.btn:hover {
-    text-decoration: none;
+    border-radius: 2vh;
 }
 
 .btn:hover {
@@ -84,20 +100,81 @@ a.btn:hover {
     transition: background-color 150ms ease-in;
 }
 
+.btn-secondary {
+    background-color: #023047;
+}
+
+.btn-danger {
+    background-color: #c00;
+}
+
+.btn-danger:hover {
+    background-color: hsl(0, 80%, 30%);
+}
+
+a.btn-lg {
+    font-size: 1em;
+}
+
+.btn-sm {
+    font-size: 0.75em;
+}
+
+a.btn:hover {
+    text-decoration: none;
+}
+
+.post-body {
+    font-size: 1.375em;
+}
+
 .card {
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 1vh;
 }
 
 .card-body {
-    margin: 10px;
+    margin: 10px 20px;
 }
 
 .card-author {
     opacity: 0.5;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container > * {
+    flex: 1;
+    margin: 10px;
+}
+
+.form {
+    margin: 10px 0px 20px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.form-child {
+    margin-bottom: 10px;
+}
+
 label {
     display: block;
+    margin-bottom: 3px;
+    font-size: 1.25em;
+}
+
+input, textarea {
+    padding: 5px;
+    border-radius: 1vh;
+    width: 100%;
 }
 
 input:valid, textarea:valid {
@@ -106,4 +183,12 @@ input:valid, textarea:valid {
 
 input:invalid, textarea:invalid {
     border-color: red;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.hidden {
+    display: none;
 }

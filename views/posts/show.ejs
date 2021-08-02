@@ -1,58 +1,69 @@
 <%- layout('layouts/boilerplate') %>
-    <h1>Show page</h1>
-    <p>
-        <%= post.body %>
-    </p>
-    <span class="card-author">
-        By <%= post.author %>
-    </span>
-    -
-    <span class="card-date">
-        <%= post.date.toLocaleDateString('en-GB') %>
-    </span>
-    <div>
-        <a href="/posts/<%= post._id %>/edit">Edit</a>
-        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
-        </form>
-    </div>
-    <div>
-        <h2>Create a new comment</h2>
-        <form action="/posts/<%= post._id %>/comments" method="POST">
-            <div>
-                <label for="comment-body">Body: </label>
-                <textarea name="comment[body]" id="comment-body" class="resource-body" cols="50" rows="5"
-                    placeholder="Leave a comment..." maxlength="63206" required></textarea>
-            </div>
-            <div>
-                <label for="comment-author">Author: </label>
-                <input type="text" name="comment[author]" id="comment-author" class="resource-author"
-                    placeholder="Username" maxlength="50" required>
-            </div>
-            <button>Submit</button>
-        </form>
-    </div>
-    <div>
-        <% if (post.comments.length) { %>
-            <h2>Comments</h2>
-            <% for (let comment of post.comments) { %>
-                <div class="card">
-                    <p>
-                        <%= comment.body %>
-                    </p>
-                    <span class="card-author">
-                        By <%= comment.author %>
-                    </span>
-                    -
-                    <span class="card-date">
-                        <%= comment.date.toLocaleDateString('en-GB') %>
-                    </span>
-                    <div>
-                        <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                            <button>Delete</button>
-                        </form>
-                    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <p class="post-body">
+                    <%= post.body %>
+                </p>
+                <span class="card-author">
+                    By <%= post.author %>
+                </span>
+                -
+                <span class="card-date">
+                    <%= post.date.toLocaleDateString('en-GB') %>
+                </span>
+                <div>
+                    <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
+                    <form class="inline-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 </div>
-            <% } %>  
-        <% } %>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h2>Comments</h2>
+                    <form class="form" action="/posts/<%= post._id %>/comments" method="POST">
+                        <div class="form-child">
+                            <label for="comment-body" class="hidden">Body: </label>
+                            <textarea name="comment[body]" id="comment-body" class="resource-body" cols="50" rows="5"
+                                placeholder="Leave a comment..." maxlength="63206" required></textarea>
+                        </div>
+                        <div class="form-child">
+                            <label for="comment-author">Author: </label>
+                            <input type="text" name="comment[author]" id="comment-author" class="resource-author"
+                                placeholder="Username" maxlength="50" required>
+                        </div>
+                        <button class="btn">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    <% if (post.comments.length) { %>
+                        <% for (let comment of post.comments) { %>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>
+                                        <%= comment.body %>
+                                    </p>
+                                    <span class="card-author">
+                                        By <%= comment.author %>
+                                    </span>
+                                    -
+                                    <span class="card-date">
+                                        <%= comment.date.toLocaleDateString('en-GB') %>
+                                    </span>
+                                    <div>
+                                        <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% } %>
+                </div>
+            </div>
+        </div>
     </div>
