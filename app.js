@@ -4,6 +4,11 @@ const path = require('path');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('./models/users');
 
 const postRoutes = require('./routes/posts')
 const commentRoutes = require('./routes/comments')
@@ -28,9 +33,30 @@ app.engine('ejs', engine);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
+app.use(session({
+    store,
+    secret: 'quackquackquack',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: true,
+        maxAge: 3600000 * 24
+    }
+}))
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/posts', postRoutes);
 app.use('/posts/:id/comments', commentRoutes);
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+})
 
 app.get('/', (req, res) => {
     res.render('home');

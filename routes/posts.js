@@ -20,3 +20,5 @@ router.route('/:id')
 router.get('/:id/edit', catchAsync(postController.getUpdate))
 
 module.exports = router;
+
+// passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
