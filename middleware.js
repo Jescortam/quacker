@@ -1,6 +1,15 @@
 const ExpressError = require('./utils/ExpressError')
 
-const validateBody = schema => {
+module.exports.isLoggedIn = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.session.returnTo = req.originalUrl;
+        req.flash('error', 'You must be logged in first');
+        return res.redirect('/login');
+    }
+    next();
+}
+
+module.exports.validateBody = schema => {
     return (req, res, next) => {
         const { error } = schema.validate(req.body);
         if (error) {
@@ -8,8 +17,4 @@ const validateBody = schema => {
             next(new ExpressError(errMsg, 400));
         } else next();
     }
-}
-
-module.exports = {
-    validateBody
 }

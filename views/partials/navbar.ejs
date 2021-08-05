@@ -1,9 +1,19 @@
 <nav class="navbar">
     <div class="navbar-container">
         <a class="navbar-brand not-underline" href="/">Quacker</a>
-        <ul class="navbar-list">
-            <li class="navbar-li"><a class="navbar-link" href="/posts">Posts</a></li>
-            <li class="navbar-li"><a class="navbar-link" href="/posts/new">New</a></li>
-        </ul>
+        <div class="flex-space-between">
+            <ul class="navbar-list">
+                <li class="navbar-li"><a class="navbar-link" href="/posts">Posts</a></li>
+                <li class="navbar-li"><a class="navbar-link" href="/posts/new">New</a></li>
+            </ul>
+            <ul class="navbar-list navbar-user-links">
+                <% if (!currentUser) { %>
+                    <li class="navbar-li"><a class="navbar-link" href="/register">Register</a></li>
+                    <li class="navbar-li"><a class="navbar-link" href="/login">Login</a></li>
+                    <% } else { %>
+                        <li class="navbar-li"><a class="navbar-link" href="/logout">Logout</a></li>
+                        <% } %>
+            </ul>
+        </div>
     </div>
 </nav>

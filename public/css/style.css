@@ -65,6 +65,12 @@ a:hover {
     color: #219ebc;
 }
 
+.flex-space-between {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
 /* 
 8ecae6
 219ebc

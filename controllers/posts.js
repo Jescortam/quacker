@@ -2,6 +2,7 @@ const Post = require('../models/posts');
 
 module.exports.index = async (req, res) => {
     const posts = await Post.find({});
+    console.log(res.locals.currentUser);
     res.render('posts/index', { posts });
 }
 

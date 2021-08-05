@@ -2,23 +2,21 @@ const express = require('express');
 const router = express.Router();
 
 const catchAsync = require('../utils/catchAsync');
-const { validateBody } = require('../middleware');
+const { validateBody, isLoggedIn } = require('../middleware');
 const { postSchema } = require('../schemas');
 const postController = require('../controllers/posts');
 
 router.route('/')
     .get(catchAsync(postController.index))
-    .post(validateBody(postSchema), catchAsync(postController.create))
+    .post(isLoggedIn, validateBody(postSchema), catchAsync(postController.create))
 
-router.get('/new', postController.getCreate) 
+router.get('/new', isLoggedIn, postController.getCreate) 
 
 router.route('/:id')
     .get(catchAsync(postController.show))
-    .put(validateBody(postSchema), catchAsync(postController.update))
-    .delete(catchAsync(postController.delete))
+    .put(isLoggedIn, validateBody(postSchema), catchAsync(postController.update))
+    .delete(isLoggedIn, catchAsync(postController.delete))
 
-router.get('/:id/edit', catchAsync(postController.getUpdate))
+router.get('/:id/edit', isLoggedIn, catchAsync(postController.getUpdate))
 
 module.exports = router;
-
-// passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
