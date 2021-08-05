@@ -1,7 +1,7 @@
 const Post = require('../models/posts');
 
 module.exports.index = async (req, res) => {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).populate('author');
     console.log(res.locals.currentUser);
     res.render('posts/index', { posts });
 }
@@ -18,7 +18,7 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.show = async (req, res) => {
-    const post = await Post.findById(req.params.id).populate('comments');
+    const post = await Post.findById(req.params.id).populate('author').populate({ path: 'comments', populate: 'author'});
     res.render('posts/show', { post });
 }
 

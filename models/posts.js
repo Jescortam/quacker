@@ -4,7 +4,10 @@ const Comment = require('./comments')
 
 const postSchema = new Schema({
     body: String,
-    author: String,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     date: Date,
     comments: [{
         type: Schema.Types.ObjectId,

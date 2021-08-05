@@ -9,6 +9,18 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+module.exports.isAuthor = collection => {
+    return async (req, res, next) => {
+        const { id, commentId } = req.params;
+        const doc = await collection.findById(commentId || id);
+        if (!doc.author.equals(req.user._id)) {
+            req.flash('error', 'You are not allowed to do that')
+            return res.redirect(`/posts/${id}`);
+        }
+        next();
+    }
+}
+
 module.exports.validateBody = schema => {
     return (req, res, next) => {
         const { error } = schema.validate(req.body);

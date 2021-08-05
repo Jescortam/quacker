@@ -27,7 +27,7 @@ const seedDB = async (qty) => {
     for (let i = 0; i < qty; i++) {
         posts.push({
             body: sample(facts),
-            author: sample(usernames),
+            author: '610aa60a78051943b8d5051b',
             date: getRandomDate()
         })
     }

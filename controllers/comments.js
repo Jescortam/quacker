@@ -5,6 +5,7 @@ module.exports.create = async (req, res) => {
     const { id } = req.params;
     const post = await Post.findById(id);
     const comment = new Comment(req.body.comment);
+    comment.author = req.user;
     comment.date = Date.now();
     post.comments.push(comment);
     await comment.save();
