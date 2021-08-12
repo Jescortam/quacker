@@ -1,6 +1,6 @@
 <%- layout('layouts/boilerplate') %>
     <div class="container">
-        <div class="card">
+        <div class="card card-post">
             <div class="card-body">
                 <p class="post-body">
                     <%= post.body %>
@@ -20,23 +20,25 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card card-comments">
             <div class="card-body">
                 <div>
                     <h2>Comments</h2>
-                    <form class="form" action="/posts/<%= post._id %>/comments" method="POST">
-                        <div class="form-child">
-                            <label for="comment-body" class="hidden">Body: </label>
-                            <textarea name="comment[body]" id="comment-body" class="resource-body" cols="50" rows="5"
-                                placeholder="Leave a comment..." maxlength="63206" required></textarea>
-                        </div>
-                        <button class="btn">Submit</button>
+                    <form class="form needs-validation <%= post.comments.length ? " form-comment" : "" %> "
+                        action="/posts/<%= post._id %>/comments"
+                            method="POST" novalidate>
+                            <div class="form-child">
+                                <label for="comment-body" class="hidden">Body: </label>
+                                <textarea name="comment[body]" id="comment-body" class="resource-body" cols="50"
+                                    rows="5" placeholder="Leave a comment..." maxlength="63206" required></textarea>
+                            </div>
+                            <button class="btn">Submit</button>
                     </form>
                 </div>
                 <div>
                     <% if (post.comments.length) { %>
                         <% for (let comment of post.comments) { %>
-                            <div class="card">
+                            <div class="card card-comment">
                                 <div class="card-body">
                                     <p>
                                         <%= comment.body %>

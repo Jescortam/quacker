@@ -1,17 +1,25 @@
 <nav class="navbar">
     <div class="navbar-container">
         <a class="navbar-brand not-underline" href="/">Quacker</a>
-        <div class="flex-space-between">
+        <button class="navbar-collapse-button">
+            Toggle
+        </button>
+        <div class="navbar-links">
             <ul class="navbar-list">
                 <li class="navbar-li"><a class="navbar-link" href="/posts">Posts</a></li>
                 <li class="navbar-li"><a class="navbar-link" href="/posts/new">New</a></li>
             </ul>
             <ul class="navbar-list navbar-user-links">
                 <% if (!currentUser) { %>
-                    <li class="navbar-li"><a class="navbar-link" href="/register">Register</a></li>
-                    <li class="navbar-li"><a class="navbar-link" href="/login">Login</a></li>
+                    <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-register"
+                            href="/register">Register</a></li>
+                    <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-log"
+                            href="/login">Login</a>
+                    </li>
                     <% } else { %>
-                        <li class="navbar-li"><a class="navbar-link" href="/logout">Logout</a></li>
+                        <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-log"
+                                href="/logout">Logout</a>
+                        </li>
                         <% } %>
             </ul>
         </div>

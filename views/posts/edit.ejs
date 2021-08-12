@@ -1,17 +1,12 @@
 <%- layout('layouts/boilerplate') %>
     <div class="container">
-        <div>
+        <div class="form-container">
             <h1>Edit a post</h1>
-            <form class="form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+            <form class="form needs-validation" action="/posts/<%= post._id %>?_method=PUT" method="POST" novalidate>
                 <div class="form-child">
                     <label for="body">Body: </label>
                     <textarea name="post[body]" id="body" cols="50" rows="5" placeholder="Quack are you thinking about?"
-                        maxlength="63206" required><%= post.body %> </textarea>
-                </div>
-                <div class="form-child">
-                    <label for="author">Author: </label>
-                    <input type="text" name="post[author]" id="author" placeholder="Username" value="<%= post.author %>"
-                        maxlength="50" required>
+                        maxlength="63206" autocomplete="off" required autofocus><%= post.body %> </textarea>
                 </div>
                 <button class="btn">Edit</button>
             </form>

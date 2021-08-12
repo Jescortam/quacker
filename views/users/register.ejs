@@ -1,22 +1,22 @@
 <%- layout('layouts/boilerplate') %>
     <div class="container">
-        <div>
+        <div class="form-container">
             <h1>Register</h1>
-            <form class="form" action="/register" method="POST">
+            <form class="form needs-validation" action="/register" method="POST" novalidate>
                 <div class="form-child">
                     <label for="username">Username: </label>
                     <input type="text" name="username" id="username" placeholder="Enter your username..." maxlength="50"
-                        required>
+                        autocomplete="off" required autofocus>
                 </div>
                 <div class="form-child">
                     <label for="email">Email: </label>
                     <input type="email" name="email" id="email" placeholder="Enter your email..." maxlength="50"
-                        required>
+                        autocomplete="off" required>
                 </div>
                 <div class="form-child">
                     <label for="password">Password: </label>
                     <input type="password" name="password" id="password" placeholder="Enter your password..."
-                        maxlength="50" required>
+                        autocomplete="off" maxlength="50" required>
                 </div>
                 <button class="btn">Register</button>
             </form>

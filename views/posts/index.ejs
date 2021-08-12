@@ -1,22 +1,25 @@
 <%- layout('layouts/boilerplate') %>
-    <h1>All Posts from Quacker</h1>
-    <a class="btn btn-lg" href="/posts/new">Create a new post</a>
-    <% for (let post of posts) { %>
-        <div class="card">
-            <div class="card-body">
-                <p>
-                    <%= post.body %>
-                </p>
-                <span class="card-author">
-                    By <%= post.author.username %>
-                </span>
-                -
-                <span class="card-date">
-                    <%= post.date.toLocaleDateString('en-GB') %>
-                </span>
-                <div>
-                    <a href="/posts/<%= post._id %>">Details</a>
+    <div class="container">
+        <h1 class="main-title">Quacker Posts</h1>
+        <a class="btn btn-lg btn-create" href="/posts/new">Create a new post</a>
+        <% for (let post of posts) { %>
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-post-body">
+                        <%= post.body %>
+                    </p>
+                    <span class="card-author">
+                        By <%= post.author.username %>
+                    </span>
+                    -
+                    <span class="card-date">
+                        <%= `${post.date.toLocaleDateString()}, ${post.date.toLocaleTimeString('en-US', {
+                            hour: '2-digit' , minute: '2-digit' })}` %>
+                    </span>
+                    <div>
+                        <a href="/posts/<%= post._id %>">Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <% } %>
+            <% } %>
+    </div>

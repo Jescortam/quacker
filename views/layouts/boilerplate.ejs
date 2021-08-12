@@ -16,9 +16,14 @@
 
 <body>
     <%- include('../partials/navbar') %>
-        <main>
-            <%- body -%>
-        </main>
+        <%- include('../partials/flash') %>
+            <main>
+
+                <%- body -%>
+            </main>
+            <%- include('../partials/footer') %>
+                <script src="/js/validateForm.js"></script>
+                <script src="/js/closeFlash.js"></script>
 </body>
 
 </html>
