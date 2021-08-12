@@ -1,4 +1,13 @@
 const ExpressError = require('./utils/ExpressError')
+const Post = require('./models/posts');
+
+module.exports.validateId = async (req, res, next) => {
+    await Post.findById(req.params.id).catch((err) => {
+        req.flash('error', 'Oops, post not found!');
+        return res.redirect('/posts')
+    })
+    next();
+}
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {

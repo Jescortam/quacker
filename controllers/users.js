@@ -25,10 +25,12 @@ module.exports.getLogin = (req, res) => {
 module.exports.login = async (req, res) => {
     const redirectUrl = (req.method === 'GET' && req.session.returnTo) ? req.session.returnTo : '/posts';
     delete req.session.returnTo;
+    req.flash('success', `Welcome back!`);
     res.redirect(redirectUrl);
 }
 
 module.exports.logout = (req, res) => {
     req.logout();
+    req.flash('success', `Goodbye!`)
     res.redirect('/posts');
 }

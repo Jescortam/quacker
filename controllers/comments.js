@@ -10,6 +10,7 @@ module.exports.create = async (req, res) => {
     post.comments.push(comment);
     await comment.save();
     await post.save();
+    req.flash('success', 'Successfully created comment');
     res.redirect(`/posts/${id}`);
 }
 
@@ -17,5 +18,6 @@ module.exports.delete = async (req, res) => {
     const { id, commentId } = req.params;
     await Post.findByIdAndUpdate(id, { $pull: { comments: commentId } });
     await Comment.findByIdAndDelete(commentId);
+    req.flash('success', 'Successfully deleted comment')
     res.redirect(`/posts/${id}`);
 }

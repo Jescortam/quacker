@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
+// HOMEPAGE
+// FOOTER OVERFLOW 100vh
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -39,10 +46,7 @@ app.use(session({
     secret: 'quackquackquack',
     resave: false,
     saveUninitialized: true,
-    cookie: {
-        //secure: true,
-        maxAge: 3600000 * 24
-    }
+    cookie: { maxAge: 3600000 * 24 }
 }))
 app.use(flash());
 app.use(passport.initialize());
@@ -57,7 +61,6 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
 
 app.use('/posts', postRoutes);
 app.use('/posts/:id/comments', commentRoutes);
