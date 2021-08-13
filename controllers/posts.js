@@ -3,8 +3,7 @@ const Post = require('../models/posts');
 module.exports.index = async (req, res) => {
     const posts = await Post.find({})
         .populate('author')
-        .sort({ date: -1 });
-    console.log(res.locals.currentUser);
+        .sort({ date: -1 })
     res.render('posts/index', { posts });
 }
 

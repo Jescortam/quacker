@@ -1,12 +1,23 @@
 const ExpressError = require('./utils/ExpressError')
 const Post = require('./models/posts');
+const Comment = require('./models/comments')
 
 module.exports.validateId = async (req, res, next) => {
     await Post.findById(req.params.id).catch((err) => {
         req.flash('error', 'Oops, post not found!');
-        return res.redirect('/posts')
+        return res.redirect('/posts');
     })
     next();
+}
+
+module.exports.validateCommentId = async (req, res, next) => {
+    const { id, commentId } = req.params;
+    if (req.originalUrl.includes('/comments')) {
+        await Comment.findById(commentId).catch((err) => {
+            req.flash('error', 'Oops, comment not found!');
+            return res.redirect(`/posts/${id}`);
+        })
+    }
 }
 
 module.exports.isLoggedIn = (req, res, next) => {

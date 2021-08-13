@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // HOMEPAGE
 // FOOTER OVERFLOW 100vh
+// Style error page
 
 const express = require('express');
 const app = express();
@@ -11,6 +12,7 @@ const path = require('path');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
+const handleError = require('./utils/handleError');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -19,7 +21,7 @@ const User = require('./models/users');
 
 const postRoutes = require('./routes/posts');
 const commentRoutes = require('./routes/comments');
-const userRoutes = require('./routes/users')
+const userRoutes = require('./routes/users');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/quacker', {
@@ -27,7 +29,7 @@ mongoose.connect('mongodb://localhost:27017/quacker', {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-});
+})
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
