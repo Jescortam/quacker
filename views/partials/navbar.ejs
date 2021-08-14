@@ -1,13 +1,10 @@
 <nav class="navbar">
     <div class="navbar-container">
         <a class="navbar-brand not-underline" href="/">Quacker</a>
-        <button class="navbar-collapse-button">
-            Toggle
-        </button>
         <div class="navbar-links">
-            <ul class="navbar-list">
+            <ul class="navbar-list navbar-post-links">
                 <li class="navbar-li"><a class="navbar-link" href="/posts">Posts</a></li>
-                <li class="navbar-li"><a class="navbar-link" href="/posts/new">New</a></li>
+                <li class="navbar-li" id="link-new-post"><a class="navbar-link" href="/posts/new">New</a></li>
             </ul>
             <ul class="navbar-list navbar-user-links">
                 <% if (!currentUser) { %>

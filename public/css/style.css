@@ -163,7 +163,6 @@ textarea {
     margin-bottom: 10px;
     border-radius: 0.8vh;
     min-width: 280px;
-    max-width: 600px;
 }
 
 .card-author {
@@ -176,6 +175,7 @@ textarea {
 
 .card-flash {
     margin: 0 auto 20px;
+    max-width: 800px;
 }
 
 .card-flash-body > * {
@@ -198,19 +198,20 @@ textarea {
 
 .container {
     display: inline-block;
+    width: 800px;
 }
 
-.container-flex > :not(.form-container) {
+/* .container-flex > :not(.form-container) {
     flex: 1;
     margin: 10px;
-}
+} */
 
-.container-flex {
+/* .container-flex {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-}
+} */
 
 .error {
     background-color: #fdd;
@@ -241,7 +242,9 @@ textarea {
 }
 
 .form-container {
-    width: 40%;
+    width: 50%;
+    margin: auto;
+    display: block;
 }
 
 .hidden {
@@ -327,6 +330,10 @@ textarea {
     .main-title {
         text-align: center;
     }
+    
+    .form-container {
+        width: 60%;
+    }
 
     .btn-create {
         width: 180px;
@@ -337,11 +344,15 @@ textarea {
 }
 
 @media (max-width: 480px) {
-    main {
+    main, .container, .form-container {
         width: 90%;
     }
 
     .btn-create {
         width: 100%;
+    }
+
+    #link-new-post {
+        display: none;
     }
 }
