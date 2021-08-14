@@ -6,6 +6,8 @@ if (process.env.NODE_ENV !== 'production') {
 // FOOTER OVERFLOW 100vh
 // Style error page
 // Add a go back to forms and pages
+// date model virtual
+// Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 
 const express = require('express');
 const app = express();
