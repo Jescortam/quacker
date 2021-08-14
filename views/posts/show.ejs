@@ -63,4 +63,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <% for (let image of post.images) { %>
+                <img src="<%= image.url %>" alt="Picture of post">
+                <% } %>
+        </div>
     </div>

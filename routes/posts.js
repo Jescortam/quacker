@@ -6,10 +6,13 @@ const { validateId, validateBody, isLoggedIn, isAuthor } = require('../middlewar
 const { postSchema } = require('../schemas');
 const postController = require('../controllers/posts');
 const Post = require('../models/posts');
+const multer = require('multer');
+const { storage } = require('../cloudinary')
+const upload = multer({ storage });
 
 router.route('/')
     .get(catchAsync(postController.index))
-    .post(isLoggedIn, validateBody(postSchema), catchAsync(postController.create))
+    .post(isLoggedIn, upload.array('image', { quality: '10' }), validateBody(postSchema), catchAsync(postController.create))
 
 router.get('/new', isLoggedIn, postController.getCreate) 
 

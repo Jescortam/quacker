@@ -13,8 +13,11 @@ module.exports.getCreate = (req, res) => {
 
 module.exports.create = async (req, res) => {
     const post = new Post(req.body.post);
+    console.log(req.body)
+    console.log(req.files)
     post.author = req.user;
     post.date = new Date(Date.now());
+    post.images = req.files.map( file => ({ url: file.path, filename: file.filename }))
     await post.save();
     req.flash('success', 'Successfully made post')
     res.redirect(`/posts/${post._id}`);

@@ -2,13 +2,14 @@
     <div class="container">
         <div class="form-container">
             <h1>Make a new post</h1>
-            <form class="form needs-validation" action="/posts" method="POST" novalidate>
+            <form class="form needs-validation" action="/posts" method="POST" enctype="multipart/form-data" novalidate>
                 <div class="form-child">
                     <label for="post-body">Body: </label>
                     <textarea name="post[body]" id="post-body" class="resource-body" cols="50" rows="5"
                         placeholder="Quack are you thinking about?" maxlength="63206" autocomplete="off" required
                         autofocus></textarea>
                 </div>
+                <input type="file" name="image" multiple>
                 <button class="btn">Submit</button>
             </form>
         </div>
