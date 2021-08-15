@@ -3,22 +3,27 @@
         <h1 class="main-title">Quacker Posts</h1>
         <a class="btn btn-lg btn-create" href="/posts/new">Create a new post</a>
         <% for (let post of posts) { %>
-            <div class="card">
+            <div class="card card-post">
                 <div class="card-body">
-                    <p class="card-post-body">
-                        <%= post.body %>
-                    </p>
                     <span class="card-author">
-                        By <%= post.author.username %>
+                        <%= post.author.username %>
                     </span>
                     -
                     <span class="card-date">
                         <%= post.creationString %>
                     </span>
+                    <p class="post-body">
+                        <%= post.body %>
+                    </p>
                     <div>
-                        <a href="/posts/<%= post._id %>">Details</a>
+                        <a href="/posts/<%= post._id %>"><span class="div-link"></span></a>
                     </div>
                 </div>
+                <% if (post.images.length) { %>
+                    <div class="card-image">
+                        <img src="<%= post.images[0].url %>" alt="Image of post">
+                    </div>
+                    <% } %>
             </div>
             <% } %>
     </div>

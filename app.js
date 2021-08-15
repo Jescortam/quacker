@@ -2,12 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-// SUBMIT LOGIN REGISTER BUTTON HOVER COLOR BLACK
-// HOMEPAGE
+// PROFILE
 // FOOTER OVERFLOW 100vh
 // Style error page
-// Add a go back to forms and pages
-// date model virtual
 // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 
 const express = require('express');

@@ -18,3 +18,11 @@ main {
 .container-main {
     text-align: center;
 }
+
+.navbar-container {
+    justify-content: space-between;
+}
+
+.home-navbar {
+    background-color: rgba(0,0,0,0);
+}

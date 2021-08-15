@@ -11,8 +11,24 @@
 </head>
 
 <body>
-    <nav>
-
+    <nav class="navbar home-navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand not-underline" href="/">Quacker</a>
+            <ul class="navbar-list navbar-user-links">
+                <% if (!currentUser) { %>
+                    <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-register"
+                            href="/register">Register</a></li>
+                    <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-log"
+                            href="/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-log"
+                                href="/logout">Logout</a>
+                        </li>
+                        <% } %>
+            </ul>
+        </div>
+        </div>
     </nav>
     <main>
         <div class="container-main">
