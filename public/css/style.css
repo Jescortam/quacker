@@ -71,6 +71,7 @@ main {
     min-height: 100vh;
     max-height: 100%;
     margin: 0px auto 50px;
+    font-size: 1rem;
 }
 
 p {
@@ -91,7 +92,7 @@ textarea {
     font-weight: bold;
     font-size: 0.875em;
     display: inline-block;
-    padding: 0.625em 1.125em;
+    padding: 0.4em 0.8em;
     margin: 10px 0px;
     background-color: #fb8500;
     opacity: 1;
@@ -172,7 +173,7 @@ textarea {
 }
 
 .card-body {
-    margin: 10px 20px;
+    margin: 15px 20px;
 }
 
 .card-flash {
@@ -312,7 +313,7 @@ textarea {
 
 .navbar {
     background-color: #023047;
-    z-index: 1;
+    z-index: 10;
     height: 50px;
     line-height: 100%;
     position: fixed;
@@ -364,9 +365,9 @@ textarea {
     text-decoration: none;
 }
 
-.post-body {
+/* .post-body {
     font-size: 1.375em;
-}
+} */
 
 .success {
     background-color: #afa;

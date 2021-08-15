@@ -13,8 +13,7 @@
                     </span>
                     -
                     <span class="card-date">
-                        <%= `${post.date.toLocaleDateString()}, ${post.date.toLocaleTimeString('en-US', {
-                            hour: '2-digit' , minute: '2-digit' })}` %>
+                        <%= post.creationString %>
                     </span>
                     <div>
                         <a href="/posts/<%= post._id %>">Details</a>

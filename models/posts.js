@@ -19,6 +19,11 @@ const postSchema = new Schema({
     }]
 })
 
+postSchema.virtual('creationString').get(function () {
+    return `${this.date.toLocaleDateString()}, 
+            ${this.date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
+})
+
 postSchema.post('findOneAndDelete', async function(doc) {
     if (doc) {
         await Comment.deleteMany({

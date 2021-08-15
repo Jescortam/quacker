@@ -10,4 +10,9 @@ const commentSchema = new Schema({
     date: Date
 });
 
+commentSchema.virtual('creationString').get(function () {
+    return `${this.date.toLocaleDateString()}, 
+            ${this.date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
+})
+
 module.exports = mongoose.model('Comment', commentSchema);

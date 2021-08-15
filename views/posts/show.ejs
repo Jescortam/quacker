@@ -2,16 +2,16 @@
     <div class="container">
         <div class="card card-post">
             <div class="card-body">
-                <p class="post-body">
-                    <%= post.body %>
-                </p>
                 <span class="card-author">
-                    By <%= post.author.username %>
+                    <%= post.author.username %>
                 </span>
                 -
                 <span class="card-date">
-                    <%= post.date.toLocaleDateString('en-GB') %>
+                    <%= post.creationString %>
                 </span>
+                <p class="post-body">
+                    <%= post.body %>
+                </p>
                 <div>
                     <div id="image-carousel" class="carousel slide" data-bs-interval="false">
                         <div class="carousel-inner">
@@ -69,7 +69,7 @@
                                     </span>
                                     -
                                     <span class="card-date">
-                                        <%= comment.date.toLocaleDateString('en-GB') %>
+                                        <%= comment.creationString %>
                                     </span>
                                     <div>
                                         <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"

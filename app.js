@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+// SUBMIT LOGIN REGISTER BUTTON HOVER COLOR BLACK
 // HOMEPAGE
 // FOOTER OVERFLOW 100vh
 // Style error page
@@ -15,7 +16,6 @@ const path = require('path');
 const engine = require('ejs-mate');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
-const handleError = require('./utils/handleError');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
