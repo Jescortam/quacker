@@ -3,13 +3,36 @@
         <div class="form-container">
             <a href="/posts/<%= post._id %>">&#8592; Go Back</a>
             <h1>Edit your post</h1>
-            <form class="form needs-validation" action="/posts/<%= post._id %>?_method=PUT" method="POST" novalidate>
+            <form class="form needs-validation" action="/posts/<%= post._id %>?_method=PUT" method="POST"
+                enctype="multipart/form-data" novalidate>
                 <div class="form-child">
                     <label for="body">Body: </label>
                     <textarea name="post[body]" id="body" cols="50" rows="5" placeholder="Quack are you thinking about?"
                         maxlength="63206" autocomplete="off" required autofocus><%= post.body %> </textarea>
                 </div>
-                <button class="btn">Edit</button>
+                <div class="form-child">
+                    <label for="image">Add Image(s):</label>
+                    <input type="file" name="image" id="image" multiple>
+                </div>
+                <% if (post.images.length) { %>
+                    <div class="form-child">
+                        <label for="delete-images">Delete Image(s):</label>
+                        <p><span id="selection-length">0</span> file(s) selected
+                        </p>
+                        <div id="delete-images">
+                            <% post.images.forEach((image, i)=> { %>
+                                <div>
+                                    <input id="delete-img-<%= i %>" class="hidden" type="checkbox" name="deleteImgs[]"
+                                        value="<%= image.filename %>">
+                                    <label for="delete-img-<%= i %>">
+                                        <img src="<%= image.url %>" class="delete-img" alt="Picture of post">
+                                    </label>
+                                </div>
+                                <% }) %>
+                        </div>
+                    </div>
+                    <% } %>
+                        <button class="btn">Edit</button>
             </form>
         </div>
     </div>

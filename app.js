@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+// ISSUE: IN INDEX THE VERTICAL PHOTO IS BLABLA
+// DELETE IMAGES IN EDIT PAGE CHECKBOX LABEL    
 // PROFILE
 // FOOTER OVERFLOW 100vh
 // Style error page

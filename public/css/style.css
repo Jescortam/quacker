@@ -52,7 +52,7 @@ input, textarea {
 
 label {
     display: block;
-    margin-bottom: 3px;
+    margin: 15px 0 7.5px;
     font-size: 1.25em;
 }
 
@@ -288,6 +288,28 @@ textarea {
     flex-wrap: wrap;
 } */
 
+#delete-images {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#delete-images > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 175px;
+}
+
+.delete-img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
 .div-link {
     position:absolute; 
     width:100%;
@@ -318,7 +340,7 @@ textarea {
 }
 
 .form-child {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .form-comment {
@@ -396,6 +418,12 @@ textarea {
 /* .post-body {
     font-size: 1.375em;
 } */
+
+.selected {
+    filter: grayscale(100%);
+    border: 2px solid #333;
+    transform: scale(0.9)
+}
 
 .success {
     background-color: #afa;

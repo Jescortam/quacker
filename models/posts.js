@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Comment = require('./comments')
+const Comment = require('./comments');
+const { cloudinary } = require('../cloudinary/index');
 
 const postSchema = new Schema({
     body: String,
@@ -26,11 +27,10 @@ postSchema.virtual('creationString').get(function () {
 
 postSchema.post('findOneAndDelete', async function(doc) {
     if (doc) {
-        await Comment.deleteMany({
-            _id: {
-                $in: doc.comments
-            }
-        })
+        await Comment.deleteMany({ _id: { $in: doc.comments } })
+        for (let image of doc.images) {
+            cloudinary.uploader.destroy(image.filename)
+        }
     }
 })
 

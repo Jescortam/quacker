@@ -11,16 +11,39 @@ const { storage } = require('../cloudinary')
 const upload = multer({ storage });
 
 router.route('/')
-    .get(catchAsync(postController.index))
-    .post(isLoggedIn, upload.array('image', { quality: '10' }), validateBody(postSchema), catchAsync(postController.create))
+    .get(
+        catchAsync(postController.index))
+    .post(
+        isLoggedIn,
+        upload.array('image'),
+        validateBody(postSchema),
+        catchAsync(postController.create))
 
-router.get('/new', isLoggedIn, postController.getCreate) 
+router.get('/new',
+        isLoggedIn,
+        postController.getCreate)
 
 router.route('/:id')
-    .get(validateId, catchAsync(postController.show))
-    .put(validateId, isLoggedIn, isAuthor(Post), validateBody(postSchema), catchAsync(postController.update))
-    .delete(validateId, isLoggedIn, isAuthor(Post), catchAsync(postController.delete))
+    .get(
+        validateId,
+        catchAsync(postController.show))
+    .put(
+        validateId,
+        isLoggedIn,
+        isAuthor(Post),
+        upload.array('image'),
+        validateBody(postSchema),
+        catchAsync(postController.update))
+    .delete(
+        validateId,
+        isLoggedIn,
+        isAuthor(Post),
+        catchAsync(postController.delete))
 
-router.get('/:id/edit', validateId, isLoggedIn, isAuthor(Post), catchAsync(postController.getUpdate))
+router.get('/:id/edit',
+        validateId,
+        isLoggedIn,
+        isAuthor(Post),
+        catchAsync(postController.getUpdate))
 
 module.exports = router;

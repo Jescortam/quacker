@@ -4,7 +4,8 @@ const postSchema = Joi.object({
     post: Joi.object({
         body: Joi.string().required().trim().max(63206).truncate()
     }),
-    image: Joi.binary().encoding('base64')
+    image: Joi.binary().encoding('base64'),
+    deleteImgs: Joi.array()
 }).required()
 
 const commentSchema = Joi.object({

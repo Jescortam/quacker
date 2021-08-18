@@ -8,8 +8,15 @@ const commentController = require('../controllers/comments');
 const Comment = require('../models/comments');
 
 
-router.post('/', isLoggedIn, validateBody(commentSchema), catchAsync(commentController.create))
+router.post('/',
+    isLoggedIn,
+    validateBody(commentSchema),
+    catchAsync(commentController.create))
 
-router.delete('/:commentId', validateCommentId, isLoggedIn, isAuthor(Comment), catchAsync(commentController.delete))
+router.delete('/:commentId',
+    validateCommentId,
+    isLoggedIn,
+    isAuthor(Comment),
+    catchAsync(commentController.delete))
 
 module.exports = router;

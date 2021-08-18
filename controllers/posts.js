@@ -1,4 +1,5 @@
 const Post = require('../models/posts');
+const { cloudinary } = require('../cloudinary/index')
 
 module.exports.index = async (req, res) => {
     const posts = await Post.find({})
@@ -13,8 +14,6 @@ module.exports.getCreate = (req, res) => {
 
 module.exports.create = async (req, res) => {
     const post = new Post(req.body.post);
-    console.log(req.body)
-    console.log(req.files)
     post.author = req.user;
     post.date = new Date(Date.now());
     post.images = req.files.map( file => ({ url: file.path, filename: file.filename }))
@@ -34,9 +33,18 @@ module.exports.getUpdate = async (req, res) => {
 }
 
 module.exports.update = async (req, res) => {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body.post, { new: true, runValidators: true });
+    const { id } = req.params;
+    const { deleteImgs } = req.body;
+    const post = await Post.findByIdAndUpdate(id, req.body.post, { new: true, runValidators: true });
     post.author = req.user;
     post.date = new Date(Date.now());
+    if (deleteImgs) {
+        for (let image of deleteImgs) {
+            await cloudinary.uploader.destroy(image);
+        }
+        await post.updateOne({ $pull: { images: { filename: { $in: deleteImgs } } } })
+    }
+    post.images.push(...req.files.map(file => ({ url: file.path, filename: file.filename })));
     await post.save();
     req.flash('success', 'Successfully updated post')
     res.redirect(`/posts/${post._id}`);
