@@ -1,6 +1,6 @@
 <%- layout('layouts/boilerplate') %>
     <div class="container">
-        <a href="/posts">&#8592; Go Back</a>
+        <a class="return" href="/posts">&#8592; Go Back</a>
         <div class="card">
             <div class="card-body">
                 <span class="card-author">
@@ -19,7 +19,7 @@
                             <div class="carousel-inner">
                                 <% post.images.forEach((image, i)=> { %>
                                     <div class="carousel-item <%= (i === 0) ? " active" : "" %>">
-                                        <img class="carousel-img" src="<%= image.url %>"
+                                        <img class="carousel-img" src="<%= image.pad16_9 %>"
                                             alt="Slide number <%= i + 1 %> ">
                                     </div>
                                     <% }) %>

@@ -3,6 +3,19 @@ const Schema = mongoose.Schema;
 const Comment = require('./comments');
 const { cloudinary } = require('../cloudinary/index');
 
+const imageSchema = new Schema({
+    url: String,
+    filename: String
+})
+
+imageSchema.virtual('pad16_9').get(function() {
+    return this.url.replace('/upload', '/upload/h_400,w_520,c_pad,b_auto:predominant');
+})
+
+imageSchema.virtual('padSquare').get(function() {
+    return this.url.replace('/upload', '/upload/h_400,w_400,c_pad,b_auto:predominant');
+})
+
 const postSchema = new Schema({
     body: String,
     author: {
@@ -14,10 +27,7 @@ const postSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Comment'
     }],
-    images: [{
-        url: String,
-        filename: String,
-    }]
+    images: [imageSchema]
 })
 
 postSchema.virtual('creationString').get(function () {
