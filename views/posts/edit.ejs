@@ -20,19 +20,19 @@
                         <p><span id="selection-length">0</span> file(s) selected
                         </p>
                         <div id="delete-images">
-                            <% post.images.forEach((image, i)=> { %>
-                                <div>
-                                    <input id="delete-img-<%= i %>" class="hidden" type="checkbox" name="deleteImgs[]"
-                                        value="<%= image.filename %>">
-                                    <label for="delete-img-<%= i %>">
-                                        <img src="<%= image.padSquare %>" class="delete-img" alt="Picture of post">
-                                    </label>
-                                </div>
-                                <% }) %>
+                        <% post.images.forEach((image, i)=> { %>
+                            <div>
+                                <input id="delete-img-<%= i %>" class="hidden" type="checkbox" name="deleteImgs[]"
+                                    value="<%= image.filename %>">
+                                <label for="delete-img-<%= i %>">
+                                    <img src="<%= image.padSquare %>" class="delete-img" alt="Picture of post">
+                                </label>
+                            </div>
+                        <% }) %>
                         </div>
                     </div>
-                    <% } %>
-                        <button class="btn">Edit</button>
+                <% } %>
+                <button class="btn">Edit</button>
             </form>
         </div>
     </div>

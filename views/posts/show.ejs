@@ -22,7 +22,7 @@
                                         <img class="carousel-img" src="<%= image.pad16_9 %>"
                                             alt="Slide number <%= i + 1 %> ">
                                     </div>
-                                    <% }) %>
+                                <% }) %>
                             </div>
                             <% if (post.images.length> 1) { %>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#image-carousel"
@@ -35,16 +35,16 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
-                                <% } %>
+                            <% } %>
                         </div>
                     </div>
-                    <% } %>
-                        <div>
-                            <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
-                            <form class="inline-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </div>
+                <% } %>
+                <div>
+                    <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
+                    <form class="inline-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="card card-comments">
@@ -85,11 +85,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <% } %>
-                                <% } %>
+                         <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>
-        <div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a
-                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </div>

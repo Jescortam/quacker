@@ -2,7 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-// PROFILE
+// IMAGE UPLOAD MODERATION
+// PROFILE POSTS
+// SECURITY STUFF
 // FOOTER OVERFLOW 100vh
 // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 

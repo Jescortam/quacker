@@ -19,11 +19,22 @@
                         <a href="/posts/<%= post._id %>"><span class="div-link"></span></a>
                     </div>
                 </div>
-                <% if (post.images.length) { %>
-                    <div class="card-image">
-                        <img src="<%= post.images[0].padSquare %>" alt="Image of post">
-                    </div>
-                    <% } %>
-            </div>
+            <% if (post.images.length) { %>
+                <div class="card-image">
+                    <img src="<%= post.images[0].padSquare %>" alt="Image of post">
+                </div>
             <% } %>
+            </div>
+        <% } %>
+        <% if (offset || postsLength > offset + limit) { %>
+            <div class="page-links">
+                <% if (offset) { %>
+                    <a class="btn btn-md" href="/posts<%= offset > limit ? `?offset=${offset - limit}` : ''%>">Previous Page</a>
+                <% } %> 
+                <% if (postsLength > offset + limit) { %>
+                    <a class="btn btn-md next-page" href="/posts?offset=<%= offset + limit %>">Next Page</a>
+                <% } %> 
+            </div>
+        <% } %> 
+
     </div>

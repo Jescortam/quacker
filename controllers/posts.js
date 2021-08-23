@@ -2,10 +2,16 @@ const Post = require('../models/posts');
 const { cloudinary } = require('../cloudinary/index')
 
 module.exports.index = async (req, res) => {
+    let { offset = 0 } = req.query;
+    offset = parseInt(offset);
+    const limit = 20;
     const posts = await Post.find({})
         .populate('author')
         .sort({ date: -1 })
-    res.render('posts/index', { posts });
+        .skip(parseInt(offset))
+        .limit(limit);
+    const postsLength = await Post.countDocuments();
+    res.render('posts/index', { posts, offset, postsLength, limit });
 }
 
 module.exports.getCreate = (req, res) => {

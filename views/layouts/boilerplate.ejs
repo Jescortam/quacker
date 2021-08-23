@@ -17,16 +17,16 @@
 
 <body>
     <%- include('../partials/navbar') %>
-        <%- include('../partials/flash') %>
-            <main>
+    <%- include('../partials/flash') %>
+    <main>
+        <%- body -%>
+    </main>
+    <%- include('../partials/footer') %>
 
-                <%- body -%>
-            </main>
-            <%- include('../partials/footer') %>
-                <script src="/js/bootstrap.js"></script>
-                <script src="/js/validateForm.js"></script>
-                <script src="/js/closeFlash.js"></script>
-                <script src="/js/selectImages.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/validateForm.js"></script>
+    <script src="/js/closeFlash.js"></script>
+    <script src="/js/selectImages.js"></script>
 </body>
 
 </html>
