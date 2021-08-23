@@ -1,13 +1,19 @@
 <%- layout('layouts/boilerplate') %>
     <div class="container">
-        <h1 class="main-title">Quacker Posts</h1>
+        <% if (author) { %>
+            <a class="return" href="/posts">&#8592; Go Back</a>
+        <% } %> 
+        <h1 class="main-title"><%= author ? `${author.username}` : 'Quacker' %> Posts</h1>
         <a class="btn btn-lg btn-create" href="/posts/new">Create a new post</a>
         <% for (let post of posts) { %>
             <div class="card card-post">
                 <div class="card-body">
-                    <span class="card-author">
+                    <div>
+                        <a href="/posts/<%= post._id %>"><span class="div-link"></span></a>
+                    </div>
+                    <a href="/posts?p_author=<%= post.author._id %>" class="card-author">
                         <%= post.author.username %>
-                    </span>
+                    </a>
                     -
                     <span class="card-date">
                         <%= post.creationString %>
@@ -15,9 +21,7 @@
                     <p class="post-body">
                         <%= post.body %>
                     </p>
-                    <div>
-                        <a href="/posts/<%= post._id %>"><span class="div-link"></span></a>
-                    </div>
+                    
                 </div>
             <% if (post.images.length) { %>
                 <div class="card-image">
@@ -26,13 +30,13 @@
             <% } %>
             </div>
         <% } %>
-        <% if (offset || postsLength > offset + limit) { %>
+        <% if (prevQuery || nextQuery) { %>
             <div class="page-links">
-                <% if (offset) { %>
-                    <a class="btn btn-md" href="/posts<%= offset > limit ? `?offset=${offset - limit}` : ''%>">Previous Page</a>
+                <% if (prevQuery) { %>
+                    <a class="btn btn-md" href="/posts<%= prevQuery %>">Previous Page</a>
                 <% } %> 
-                <% if (postsLength > offset + limit) { %>
-                    <a class="btn btn-md next-page" href="/posts?offset=<%= offset + limit %>">Next Page</a>
+                <% if (nextQuery) { %>
+                    <a class="btn btn-md next-page" href="/posts<%= nextQuery %>  %>">Next Page</a>
                 <% } %> 
             </div>
         <% } %> 

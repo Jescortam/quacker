@@ -3,9 +3,9 @@
         <a class="return" href="/posts">&#8592; Go Back</a>
         <div class="card">
             <div class="card-body">
-                <span class="card-author">
+                <a href="/posts?p_author=<%= post.author._id %>" class="card-author">
                     <%= post.author.username %>
-                </span>
+                </a>
                 -
                 <span class="card-date">
                     <%= post.creationString %>

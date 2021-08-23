@@ -1,17 +1,30 @@
 const Post = require('../models/posts');
+const User = require('../models/users')
 const { cloudinary } = require('../cloudinary/index')
 
 module.exports.index = async (req, res) => {
-    let { offset = 0 } = req.query;
+    let { offset = 0, p_author } = req.query;
     offset = parseInt(offset);
     const limit = 20;
-    const posts = await Post.find({})
+    const findQuery = (p_author) ? { author: { _id: p_author } } : {}
+    const posts = await Post.find(findQuery)
         .populate('author')
         .sort({ date: -1 })
         .skip(parseInt(offset))
         .limit(limit);
-    const postsLength = await Post.countDocuments();
-    res.render('posts/index', { posts, offset, postsLength, limit });
+    const postsLength = await Post.countDocuments(findQuery);
+    let prevQuery = (offset >= limit) ? `?offset=${offset - limit}` : '';
+    let nextQuery = (postsLength > offset + limit) ? `?offset=${offset + limit}` : '';
+    let author;
+    if (p_author) {
+        const addAuthorQuery = query => {
+            query.concat(((query.includes('?')) ? '&' : '?') + `author=${p_author}`)
+        }
+        addAuthorQuery(prevQuery);
+        addAuthorQuery(nextQuery);
+        author = await User.findById(p_author);
+    }
+    res.render('posts/index', { posts, prevQuery, nextQuery, author});
 }
 
 module.exports.getCreate = (req, res) => {

@@ -1,3 +1,5 @@
+const User = require('../models/users')
+
 module.exports.getRegister = (req, res) => {
     res.render('users/register')
 }
