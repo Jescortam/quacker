@@ -67,15 +67,15 @@
                         <% for (let comment of post.comments) { %>
                             <div class="card card-comment">
                                 <div class="card-body">
-                                    <span class="card-author">
-                                        <%= post.author.username %>
-                                    </span>
+                                    <a href="/posts?p_author=<%= comment.author._id %>" class="card-author">
+                                        <%= comment.author.username %>
+                                    </a>
                                     -
                                     <span class="card-date">
-                                        <%= post.creationString %>
+                                        <%= comment.creationString %>
                                     </span>
                                     <p class="post-body">
-                                        <%= post.body %>
+                                        <%= comment.body %>
                                     </p>
                                     <div>
                                         <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"

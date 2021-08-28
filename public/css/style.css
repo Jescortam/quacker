@@ -194,9 +194,11 @@ textarea {
 
 .card-flash-body > * {
     display: block;
+    line-height: 20px;
 }
 
 .card-flash-body {
+    margin: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -423,6 +425,11 @@ textarea {
 .return {
     display: inline-block;
     margin-bottom: 5px;
+}
+
+.requirement {
+    font-size: 0.75em;
+    opacity: 0.625;
 }
 
 .selected {

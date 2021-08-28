@@ -6,13 +6,17 @@ module.exports.getRegister = (req, res) => {
 
 module.exports.register = async (req, res, next) => {
     try {
+        if (await User.findOne({ email: req.body.email })) {
+            req.flash('error', 'Email has already been taken');
+            res.redirect('/register')
+        }
         const { username, email, password } = req.body;
         const user = new User({ username, email });
         const registUser = await User.register(user, password);
         req.login(registUser, err => {
             if (err) return next(err);
             req.flash('success', 'Successfully logged in!');
-            res.redirect('/posts');
+            res.redirect('back');
         })
     } catch (err) {
         req.flash('error', err.message);
@@ -25,7 +29,7 @@ module.exports.getLogin = (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
-    const redirectUrl = (req.method === 'GET' && req.session.returnTo) ? req.session.returnTo : '/posts';
+    const redirectUrl = req.session.returnTo || '/campgrounds';
     delete req.session.returnTo;
     req.flash('success', `Welcome back!`);
     res.redirect(redirectUrl);

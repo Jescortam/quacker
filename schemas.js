@@ -37,7 +37,14 @@ const commentSchema = Joi.object({
     }).required()
 }).required()
 
+const userSchema = Joi.object({
+    username: Joi.string().alphanum().trim().min(4).max(32).required(),
+    email: Joi.string().email().trim().max(64).required(),
+    password: Joi.string().trim().min(8).max(20).required()
+})
+
 module.exports = {
     postSchema,
-    commentSchema
+    commentSchema,
+    userSchema
 }

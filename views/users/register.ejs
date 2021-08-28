@@ -6,18 +6,18 @@
             <form class="form needs-validation" action="/register" method="POST" novalidate>
                 <div class="form-child">
                     <label for="username">Username: </label>
-                    <input type="text" name="username" id="username" placeholder="Enter your username..." maxlength="50"
+                    <input type="text" name="username" id="username" placeholder="Enter your username..." minlength="4" maxlength="32"
                         autocomplete="off" required autofocus>
                 </div>
                 <div class="form-child">
                     <label for="email">Email: </label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email..." maxlength="50"
+                    <input type="email" name="email" id="email" placeholder="Enter your email..." maxlength="64"
                         autocomplete="off" required>
                 </div>
                 <div class="form-child">
-                    <label for="password">Password: </label>
+                    <label for="password">Password: <span class="requirement">(Must be 8-20 characters long)</span></label>
                     <input type="password" name="password" id="password" placeholder="Enter your password..."
-                        autocomplete="off" maxlength="50" required>
+                        autocomplete="off" minlength="8" maxlength="20" required>
                 </div>
                 <button class="btn">Register</button>
             </form>

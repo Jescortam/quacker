@@ -3,8 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // IMAGE UPLOAD MODERATION
-// SECURITY STUFF
-// Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 
 const express = require('express');
 const app = express();

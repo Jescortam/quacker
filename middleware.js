@@ -5,7 +5,7 @@ const Comment = require('./models/comments')
 module.exports.validateId = async (req, res, next) => {
     await Post.findById(req.params.id).catch((err) => {
         req.flash('error', 'Oops, post not found!');
-        return res.redirect('/posts');
+        return res.redirect('back');
     })
     next();
 }
@@ -18,6 +18,7 @@ module.exports.validateCommentId = async (req, res, next) => {
             return res.redirect(`/posts/${id}`);
         })
     }
+    next();
 }
 
 module.exports.isLoggedIn = (req, res, next) => {

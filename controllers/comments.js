@@ -4,6 +4,7 @@ const Post = require('../models/posts');
 module.exports.create = async (req, res) => {
     const { id } = req.params;
     const post = await Post.findById(id);
+    console.log(req.body.comment)
     const comment = new Comment(req.body.comment);
     comment.author = req.user;
     comment.date = Date.now();
