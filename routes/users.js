@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const catchAsync = require('../utils/catchAsync');
-const passport = require('passport');
-const userController = require('../controllers/users');
+
 const { validateBody } = require('../middleware');
 const { userSchema } = require('../schemas');
-
+const passport = require('passport');
+const catchAsync = require('../utils/catchAsync');
+const userController = require('../controllers/users');
 
 router.route('/register')
     .get(

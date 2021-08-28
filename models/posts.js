@@ -8,10 +8,12 @@ const imageSchema = new Schema({
     filename: String
 })
 
+// Get the image in a 16:9 ratio
 imageSchema.virtual('pad16_9').get(function() {
     return this.url.replace('/upload', '/upload/h_400,w_520,c_pad,b_auto:predominant');
 })
 
+// Get the image in a 1:1 ratio
 imageSchema.virtual('padSquare').get(function() {
     return this.url.replace('/upload', '/upload/h_400,w_400,c_pad,b_auto:predominant');
 })
@@ -30,6 +32,7 @@ const postSchema = new Schema({
     images: [imageSchema]
 })
 
+// Get date and time in the user time zone and in the form of a string
 postSchema.virtual('creationString').get(function () {
     const localDate = new Date(this.date + this.date.getTimezoneOffset() * 60000)
     return `${localDate.toLocaleDateString()}, 
@@ -39,6 +42,7 @@ postSchema.virtual('creationString').get(function () {
             })}`
 })
 
+// When a post is deleted also deleat the comments and images it had
 postSchema.post('findOneAndDelete', async function(doc) {
     if (doc) {
         await Comment.deleteMany({ _id: { $in: doc.comments } })

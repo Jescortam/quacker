@@ -1,3 +1,4 @@
+// Validates the form client-side
 (function () {
     'use strict'
 

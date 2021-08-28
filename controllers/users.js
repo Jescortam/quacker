@@ -1,9 +1,11 @@
 const User = require('../models/users')
 
+// Get registration form
 module.exports.getRegister = (req, res) => {
     res.render('users/register')
 }
 
+// Register user
 module.exports.register = async (req, res, next) => {
     try {
         if (await User.findOne({ email: req.body.email })) {
@@ -24,10 +26,12 @@ module.exports.register = async (req, res, next) => {
     }
 }
 
+// Get login form
 module.exports.getLogin = (req, res) => {
     res.render('users/login');
 }
 
+// Login user
 module.exports.login = async (req, res) => {
     const redirectUrl = req.session.returnTo || '/campgrounds';
     delete req.session.returnTo;
@@ -35,6 +39,7 @@ module.exports.login = async (req, res) => {
     res.redirect(redirectUrl);
 }
 
+// Logout user
 module.exports.logout = (req, res) => {
     req.logout();
     req.flash('success', `Goodbye!`)

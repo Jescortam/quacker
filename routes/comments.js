@@ -7,7 +7,6 @@ const { commentSchema } = require('../schemas');
 const commentController = require('../controllers/comments');
 const Comment = require('../models/comments');
 
-
 router.post('/',
     isLoggedIn,
     validateBody(commentSchema),

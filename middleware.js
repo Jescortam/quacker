@@ -2,6 +2,7 @@ const ExpressError = require('./utils/ExpressError')
 const Post = require('./models/posts');
 const Comment = require('./models/comments')
 
+// Validate the post ID by checking if it exists
 module.exports.validateId = async (req, res, next) => {
     await Post.findById(req.params.id).catch((err) => {
         req.flash('error', 'Oops, post not found!');
@@ -10,6 +11,7 @@ module.exports.validateId = async (req, res, next) => {
     next();
 }
 
+// Validate the comment ID by checking if it exists
 module.exports.validateCommentId = async (req, res, next) => {
     const { id, commentId } = req.params;
     if (req.originalUrl.includes('/comments')) {
@@ -21,6 +23,7 @@ module.exports.validateCommentId = async (req, res, next) => {
     next();
 }
 
+// Checking if the user is logged in
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
@@ -30,6 +33,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+// Checks if the user is the author
 module.exports.isAuthor = collection => {
     return async (req, res, next) => {
         const { id, commentId } = req.params;
@@ -42,6 +46,7 @@ module.exports.isAuthor = collection => {
     }
 }
 
+// Validates the body of the previously sent form
 module.exports.validateBody = schema => {
     return (req, res, next) => {
         const { error } = schema.validate(req.body);
