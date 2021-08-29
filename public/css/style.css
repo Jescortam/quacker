@@ -142,6 +142,10 @@ textarea {
     transition: background-color 150ms ease-in;
 }
 
+.btn-secondary:hover {
+    background-color: #023047;
+}
+
 .btn-danger:hover {
     background-color: hsl(0, 80%, 30%);
 }

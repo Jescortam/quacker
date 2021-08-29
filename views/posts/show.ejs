@@ -39,12 +39,14 @@
                         </div>
                     </div>
                 <% } %>
-                <div>
-                    <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
-                    <form class="inline-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                </div>
+                <% if (currentUser && post.author.equals(currentUser._id)) { %> 
+                    <div>
+                        <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
+                        <form class="inline-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                <% } %> 
             </div>
         </div>
         <div class="card card-comments">
@@ -77,12 +79,14 @@
                                     <p class="post-body">
                                         <%= comment.body %>
                                     </p>
-                                    <div>
-                                        <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
-                                            method="POST">
-                                            <button class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </div>
+                                    <% if (currentUser && comment.author.equals(currentUser._id)) {%>
+                                        <div>
+                                            <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                                method="POST">
+                                                <button class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </div>
+                                    <% } %> 
                                 </div>
                             </div>
                          <% } %>
