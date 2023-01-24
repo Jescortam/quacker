@@ -1,4 +1,12 @@
 # Quaker
-Quacker is a social networking service to share everything you love about ducks and geese, so sit back and quack :)
+Quacker is a social networking service to freely share your thoughts. It uses the following technologies:
+- **Node.js+Express**: Backend
+- **MongoDB**: Document-oriented database program
+- **Mongoose**: MongoDB object modeling tool for Node.js 
+- **EJS**: Embedded Javascript Templating
+- **Cloudinary**: Image and video management services
+- **Passport.js**: Authentication middleware for Node.js
+- **Joi.dev**: Data validator for JavaScript
+
 ---
 This is greatly inspired by Colt Steele's **The Web Developer Bootcamp 2021**.
