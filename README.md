@@ -1,6 +1,7 @@
 # Quaker
 Quacker is a social networking service to freely share your thoughts. It uses the following technologies:
 - **Node.js+Express**: Backend
+- **CSS**: Style sheet language 
 - **MongoDB**: Document-oriented database program
 - **Mongoose**: MongoDB object modeling tool for Node.js 
 - **EJS**: Embedded Javascript Templating
