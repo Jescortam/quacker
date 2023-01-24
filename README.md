@@ -1,4 +1,4 @@
-# Quaker
+# Quacker
 Quacker is a social networking service to freely share your thoughts. It uses the following technologies:
 - **Node.js+Express**: Backend
 - **CSS**: Style sheet language 
