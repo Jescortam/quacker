@@ -13,6 +13,24 @@ Quacker is a social networking service to freely share your thoughts.
 - **Passport.js**: Authentication middleware for Node.js
 - **Joi.dev**: Data validator for JavaScript
 
+## Models:
+
+### Post properties:
+* **body** (String): The body of the post.
+* **author** (ObjectID): Reference to the user that created the post.
+* **date** (Date): Date of creation.
+* **comments** (Array<ObjectID>): Array of references to the comments made on the post.
+* **images**: (Array<{ url: String, filename: String}>): Array of images' filenames and urls.
+
+### Comment properties:
+* **body** (String): The body of the comment.
+* **author** (ObjectID): Reference to the user that created the comment.
+* **date** (Date): Date of creation.
+
+### User properties:
+* **email** (String): Email of the user, must be unique.
+* Password hash: Encrypted password of the user.
+
 ## Routes:
 
 ### Post routes ('/posts'):
