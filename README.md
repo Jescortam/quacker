@@ -46,7 +46,7 @@ Quacker is a social networking service to freely share your thoughts.
         * Uploads attached images to cloudinary.
         * Updates the post in the database.
 
-* **GET_UPDATE (GET '/:id/edit'):
+* **GET_UPDATE (GET '/:id/edit')**:
     1. Validates the ID.
     2. Checks if the user is logged in.
     3. Checks if the user is the author of the post.
