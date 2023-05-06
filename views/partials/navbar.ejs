@@ -7,7 +7,7 @@
                 <li class="navbar-li" id="link-new-post"><a class="navbar-link" href="/posts/new">New</a></li>
             </ul>
             <ul class="navbar-list navbar-user-links">
-                <% if (!currentUser) { %>
+                <% if (!currentUser || currentUser === undefined) { %>
                     <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-register"
                             href="/register">Register</a></li>
                     <li class="navbar-li navbar-user-li"><a class="navbar-link btn btn-user-link btn-log"
