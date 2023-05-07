@@ -1,5 +1,6 @@
 # Quacker
-Quacker is a social networking service to freely share your thoughts.
+Quacker is a social networking service to freely share your thoughts.\
+Website: [Quacker](https://quacker-zdyv.onrender.com/)
 
 ## Languages used:
 - **Node.js+Express**: Backend
